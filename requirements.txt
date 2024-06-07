@@ -2,7 +2,8 @@ wheel
 numpy
 pandas
 plotly
-opencv-python-headless
+opencv-python
 cmake
 streamlit
 pillow
+facenet_pytorch
