@@ -1,15 +1,13 @@
 import streamlit as st
 import cv2
-import mtcnn
-from mtcnn import MTCNN
 from PIL import Image
 import numpy as np
 st.title('Face Detection')
 
 st.subheader("\n\n\n\n")
 
+from facenet_pytorch import MTCNN
 
-# # col1, col2, col3 = st.columns(3)
 input= ['',"Face Detection","Face Extraction","Face Recognition"]
 st.subheader("Select options from below")
 button = st.selectbox(" ",input)
@@ -20,12 +18,16 @@ detector = MTCNN()
 def face_detect(img):
     image = Image.open(img)
     image = np.array(image)
-    faces = detector.detect_faces(image)
+   
+    faces, _ = detector.detect(image)
+
 
     for face in faces:
-        x,y,w,h = face['box']
+        
+        x,y,w,h = map(int, face)
 
-        cv2.rectangle(image, (x,y),(x+w,y+h),(0,255,0),2)
+        cv2.rectangle(image, (x,y),(w,h),(0,255,0),2)
+
 
     return st.image(image, caption='Detected Faces')
     
@@ -36,12 +38,12 @@ def face_extraction(img):
     image = Image.open(img)
     image = np.array(image)
 
-    faces = detector.detect_faces(image)
+    faces, _ = detector.detect(image)
 
     for face in faces:
-        x,y,w,h = face['box']
+        x,y,w,h = map(int, face)
 
-        extracted_face = image[y:y+h, x:x+w]
+        extracted_face = image[y:h, x:w]
 
         st.image(extracted_face, caption='Extracted Face')
 
