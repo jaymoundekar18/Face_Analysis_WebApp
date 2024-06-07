@@ -4,7 +4,7 @@ matplotlib
 streamlit
 seaborn
 plotly
-opencv-python
+opencv-python==4.9.0
 mtcnn
 pillow
 deepface
