@@ -1,5 +1,5 @@
 import streamlit as st
-
+import cv2
 import mtcnn
 from mtcnn import MTCNN
 from PIL import Image
@@ -25,7 +25,7 @@ def face_detect(img):
     for face in faces:
         x,y,w,h = face['box']
 
-        # cv2.rectangle(image, (x,y),(x+w,y+h),(0,255,0),2)
+        cv2.rectangle(image, (x,y),(x+w,y+h),(0,255,0),2)
 
     return st.image(image, caption='Detected Faces')
     
