@@ -4,8 +4,8 @@ matplotlib==3.7.5
 streamlit==1.35.0
 seaborn==0.13.2
 plotly==5.22.0
-opencv-python==4.9.0
-mtcnn==0.1.0
+opencv-python
+mtcnn
 pillow==10.3.0
 deepface==0.0.91
 tensorflow==2.13.0
