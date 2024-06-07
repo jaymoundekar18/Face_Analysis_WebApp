@@ -1,5 +1,6 @@
 import streamlit as st
-#import cv2
+import cv2
+import mtcnn
 from mtcnn import MTCNN
 from PIL import Image
 import numpy as np
