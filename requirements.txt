@@ -5,5 +5,4 @@ plotly
 opencv-python-headless
 cmake
 streamlit
-mtcnn
 pillow
