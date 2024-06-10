@@ -109,7 +109,7 @@ def face_analysis(img):
     image = image.resize((300,300))
     image = np.array(image)
 
-    data = DeepFace.analyze(image, actions=['gender'])
+    data = DeepFace.analyze(image)
     old = data[0]
 
     for i in old.keys():
