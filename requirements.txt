@@ -8,3 +8,4 @@ pillow
 facenet_pytorch
 deepface
 streamlit_webrtc
+tf-keras
