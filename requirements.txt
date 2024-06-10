@@ -6,3 +6,4 @@ opencv-python-headless
 streamlit
 pillow
 facenet_pytorch
+deepface
