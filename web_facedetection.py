@@ -106,7 +106,7 @@ def face_recognition(img):
 def face_analysis(img):
     
     image = Image.open(img)
-    image = image.resize((300,300))
+    image = image.resize((500,500))
     image = np.array(image)
 
     data = DeepFace.analyze(image)
