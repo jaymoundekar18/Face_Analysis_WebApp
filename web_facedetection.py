@@ -91,10 +91,11 @@ def face_recognition(img):
         st.write("Face matches with : ")
         for i in range(len(result)):
                 a = result[i]['identity'][0]
-                b = a.split("\\")
-                pname = b[1]
+                #b = a.split("\\")
+                #pname = b[1]
 
-                st.write(f"**{pname}**")
+                #st.write(f"**{pname}**")
+                st.write(a)
 
     else :
         st.error(f"No match found in the database")
