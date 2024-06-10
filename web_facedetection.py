@@ -4,19 +4,20 @@ from PIL import Image
 import numpy as np
 from facenet_pytorch import MTCNN
 from deepface import DeepFace
-from pathlib import Path
 
-st.title('Face Detection')
+st.title('Face App')
 
 st.subheader("\n\n\n\n")
 
 
 
-input= ['',"Face Detection","Face Extraction","Face Verification","Face Recognition"]
+input= ['',"Face Detection","Face Extraction","Face Verification","Face Recognition","Face Analysis"]
 st.subheader("Select options from below")
 button = st.selectbox(" ",input)
 
 detector = MTCNN()
+
+#################################################
 
 ## Face bounding Box
 def face_detect(img):
@@ -36,6 +37,8 @@ def face_detect(img):
     return st.image(image, caption='Detected Faces')
     
 
+#################################################
+
 ## Face Extraction
 def face_extraction(img):
 
@@ -51,6 +54,8 @@ def face_extraction(img):
 
         st.image(extracted_face, caption='Extracted Face')
 
+
+#################################################
 
 ## Face Verification
 
@@ -69,27 +74,62 @@ def face_verification(img1, img2):
         st.error("Both persons are different")
 
 
+#################################################
+
 ## Face Recognition
 def face_recognition(img):
-    
-    result = DeepFace.find(img_path=img, db_path=r"D:\code\Prac\New folder")
-    x,y = result[0].shape
-    if x > 0:
-        a = result[0]['identity'][0]
-        b = a.split("\\")
-        pname = b[4]
 
-        st.write(f"Face matches with : {pname}")
+    image = Image.open(img)
+    image = np.array(image)
+
+    result = DeepFace.find(img_path=image, db_path=r"D:\code\Prac\New folder")
+    x,y = result[0].shape
+
+    if x > 0:
+
+        st.success(f"Number of face detected : {len(result)}")
+        st.write("Face matches with : ")
+        for i in range(len(result)):
+                a = result[i]['identity'][0]
+                b = a.split("\\")
+                pname = b[4]
+
+                st.write(f"**{pname}**")
 
     else :
-        st.write(f"No match found in the database")
+        st.error(f"No match found in the database")
 
+#################################################
 
+## Face Analysis
+def face_analysis(img):
     
+    image = Image.open(img)
+    image = np.array(image)
+
+    data = DeepFace.analyze(image)
+    old = data[0]
+
+    for i in old.keys():
+     
+        if isinstance(old[i], dict):
+            continue
+
+        st.write(f"{i} : {old[i]}")
+
+    # for key, value in data[0].items():
+    #     st.write(f"{key} : {value}")
+
+
+#####################################################################################################################################
+
+
+## Different processes
 if button ==input[1]:
     img = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"])
 
-    st.write("Or Take photo from camera") 
+    st.write("OR")
+    st.write("Take photo from camera") 
 
     cam = st.camera_input("")
 
@@ -103,11 +143,14 @@ if button ==input[1]:
         face_detect(cam)
         
 
+#################################################
+
 elif button ==input[2]:
 
     img = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"])
 
-    st.write("Or Take photo from camera") 
+    st.write("OR")
+    st.write("Take photo from camera") 
 
     cam = st.camera_input("")
 
@@ -118,6 +161,8 @@ elif button ==input[2]:
     elif cam is not None:
         face_extraction(cam)
 
+
+#################################################
 
 elif button ==input[3]:
         
@@ -130,18 +175,55 @@ elif button ==input[3]:
         face_verification(img1, img2)
 
 
+#################################################
+
 elif button ==input[4]:
     
-    #img = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"])
-    img = st.text_input("Enter image path")
-    #st.write("Or Take photo from camera") 
+    st.subheader("Face Recognition")
+
+    img = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"])
+
+    st.write("OR")
+    st.write("Take photo from camera") 
+
+    cam = st.camera_input("")
+
+    if img is not None:
+
+        face_recognition(img)
     
-    path = Path(img)
-    #cam = st.camera_input("")
+    elif cam is not None:
+        face_recognition(cam)
+
+   
+
+#################################################
+
+elif button ==input[5]:
     
-    if img:
-        
-        face_recognition(path)
+    st.subheader("Face Attributes")
+
+    img = st.file_uploader("Upload image", type=["png", "jpg", "jpeg"])
+
+    st.write("OR")
+
+    st.write("Take photo from camera") 
+
+    cam = st.camera_input("")
+
+   
+
+    if img is not None:
+
+
+        st.subheader("Provided Image")
+        st.image(img)
+
+        face_analysis(img)
     
-    #elif cam is not None:
-       # face_recognition(cam)
+    elif cam is not None:
+
+        st.subheader("Provided Image")
+        st.image(cam)
+
+        face_analysis(cam)
