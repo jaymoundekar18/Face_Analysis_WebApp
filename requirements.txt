@@ -6,5 +6,5 @@ opencv-python-headless
 streamlit
 pillow
 facenet_pytorch
-deepface==0.0.92
+deepface
 streamlit_webrtc
