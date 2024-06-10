@@ -82,7 +82,7 @@ def face_recognition(img):
     image = Image.open(img)
     image = np.array(image)
 
-    result = DeepFace.find(img_path=image, db_path=r"D:\code\Prac\New folder")
+    result = DeepFace.find(img_path=image, db_path="Dataset")
     x,y = result[0].shape
 
     if x > 0:
