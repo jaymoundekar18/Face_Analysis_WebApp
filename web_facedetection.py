@@ -92,7 +92,7 @@ def face_recognition(img):
         for i in range(len(result)):
                 a = result[i]['identity'][0]
                 b = a.split("\\")
-                pname = b[4]
+                pname = b[1]
 
                 st.write(f"**{pname}**")
 
