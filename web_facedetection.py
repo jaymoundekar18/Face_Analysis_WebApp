@@ -22,6 +22,7 @@ detector = MTCNN()
 ## Face bounding Box
 def face_detect(img):
     image = Image.open(img)
+    image = image.resize((250,200))
     image = np.array(image)
    
     faces, _ = detector.detect(image)
@@ -43,6 +44,7 @@ def face_detect(img):
 def face_extraction(img):
 
     image = Image.open(img)
+    image = image.resize((250,200))
     image = np.array(image)
 
     faces, _ = detector.detect(image)
@@ -62,8 +64,10 @@ def face_extraction(img):
 def face_verification(img1, img2):
     
     image1 = Image.open(img1)
+    image1 = image1.resize((250,200))
     image1 = np.array(image1)
     image2 = Image.open(img2)
+    image2 = image2.resize((250,200))
     image2 = np.array(image2)
     
     result = DeepFace.verify(image1, image2)
@@ -80,6 +84,7 @@ def face_verification(img1, img2):
 def face_recognition(img):
 
     image = Image.open(img)
+    image = image.resize((250,200))
     image = np.array(image)
 
     result = DeepFace.find(img_path=image, db_path="Dataset")
@@ -106,6 +111,7 @@ def face_recognition(img):
 def face_analysis(img):
     
     image = Image.open(img)
+    image = image.resize((250,200))
     image = np.array(image)
 
     data = DeepFace.analyze(image)
