@@ -122,7 +122,7 @@ def face_analysis(img):
     # for key, value in data[0].items():
     #     st.write(f"{key} : {value}")
 
-    act = ['age'] #, 'gender','emotion', 'race'
+    act = ['age', 'gender'] #,'emotion', 'race'
     my = dict()
 
     for i in act:
