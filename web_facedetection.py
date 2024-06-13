@@ -132,15 +132,7 @@ def face_analysis(img):
         if isinstance(old[i], dict):
             continue
         my[i.capitalize()] = old[i]
-    
-    data = DeepFace.analyze(image, actions='gender')
-    old = data[0]
-    for i in old.keys():
-        if isinstance(old[i], dict):
-            continue
-        my[i.capitalize()] = old[i]
-
-    
+        
     for i, val in my.items():
         
         if isinstance(my[i], str):
