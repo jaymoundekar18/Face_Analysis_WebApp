@@ -109,19 +109,43 @@ def face_analysis(img):
     image = image.resize((350,350))
     image = np.array(image)
 
-    data = DeepFace.analyze(image,  actions=['emotion'])
-    old = data[0]
+    #data = DeepFace.analyze(image,  actions=['emotion'])
+    #old = data[0]
 
-    for i in old.keys():
+    #for i in old.keys():
      
-        if isinstance(old[i], dict):
-            continue
+        #if isinstance(old[i], dict):
+            #continue
 
-        st.write(f"{i} : {old[i]}")
+        #st.write(f"{i} : {old[i]}")
 
     # for key, value in data[0].items():
     #     st.write(f"{key} : {value}")
 
+    act = ['age', 'gender','emotion', 'race']
+    my = dict()
+
+    for i in act:
+        data = DeepFace.analyze(image, actions=[i])
+        old = data[0]
+
+        for i in old.keys():
+            
+            if isinstance(old[i], dict):
+                continue
+
+            my[i.capitalize()] = old[i]
+
+    for i, val in my.items():
+        
+        if isinstance(my[i], str):
+            st.write(f":green[{i} : {my[i].capitalize()}]")
+
+        elif isinstance(my[i], float):
+            st.write(f":green[{i} : {my[i]*100}]")
+
+        else:
+            st.write(f":green[{i} : {my[i]}]")
 
 #####################################################################################################################################
 
