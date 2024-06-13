@@ -221,7 +221,7 @@ elif button ==input[5]:
         st.subheader("Provided Image")
         st.image(img)
 
-        #face_analysis(img)
+        face_analysis(img)
     
     elif cam is not None:
 
