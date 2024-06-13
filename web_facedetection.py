@@ -109,7 +109,7 @@ def face_analysis(img):
     image = image.resize((350,350))
     image = np.array(image)
 
-    data = DeepFace.analyze(image)
+    data = DeepFace.analyze(image,  actions=['emotion'])
     old = data[0]
 
     for i in old.keys():
