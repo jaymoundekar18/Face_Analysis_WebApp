@@ -122,20 +122,25 @@ def face_analysis(img):
     # for key, value in data[0].items():
     #     st.write(f"{key} : {value}")
 
-    act = ['age', 'gender'] #,'emotion', 'race'
+    #act = ['age', 'gender'] #,'emotion', 'race'
     my = dict()
 
-    for i in act:
-        data = DeepFace.analyze(image, actions=[i])
-        old = data[0]
+    
+    data = DeepFace.analyze(image, actions='age')
+    old = data[0]
+    for i in old.keys():
+        if isinstance(old[i], dict):
+            continue
+        my[i.capitalize()] = old[i]
+    
+    data = DeepFace.analyze(image, actions='gender')
+    old = data[0]
+    for i in old.keys():
+        if isinstance(old[i], dict):
+            continue
+        my[i.capitalize()] = old[i]
 
-        for i in old.keys():
-            
-            if isinstance(old[i], dict):
-                continue
-
-            my[i.capitalize()] = old[i]
-
+    
     for i, val in my.items():
         
         if isinstance(my[i], str):
