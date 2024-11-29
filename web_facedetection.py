@@ -67,7 +67,7 @@ def face_verification(img1, img2):
     image2 = Image.open(img2)
     image2 = np.array(image2)
     
-    result = deepface.DeepFace.verify(image1, image2)
+    result = DeepFace.verify(image1, image2)
     res = result['verified']
     if res:
         st.success("Both persons are same")
@@ -83,7 +83,7 @@ def face_recognition(img):
     image = Image.open(img)
     image = np.array(image)
 
-    result = deepface.DeepFace.find(img_path=image, db_path="Dataset")
+    result = DeepFace.find(img_path=image, db_path="Dataset")
     x,y = result[0].shape
 
     if x > 0:
@@ -110,7 +110,7 @@ def face_analysis(img):
     image = image.resize((350,350))
     image = np.array(image)
 
-    #data = deepface.DeepFace.analyze(image,  actions=['emotion'])
+    #data = DeepFace.analyze(image,  actions=['emotion'])
     #old = data[0]
 
     #for i in old.keys():
@@ -127,7 +127,7 @@ def face_analysis(img):
     my = dict()
 
     
-    data = deepface.DeepFace.analyze(image, actions='age')
+    data = DeepFace.analyze(image, actions='age')
     old = data[0]
     for i in old.keys():
         if isinstance(old[i], dict):
