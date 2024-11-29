@@ -9,6 +9,7 @@ import deepface
 st.title('Face App')
 
 st.subheader("\n\n\n\n")
+st.write(deepface.__version__)
 st.subheader(dir(deepface))
 
 input= ['',"Face Detection","Face Extraction","Face Verification","Face Recognition","Face Analysis"]
