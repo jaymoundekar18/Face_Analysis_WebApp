@@ -5,7 +5,7 @@ import numpy as np
 from facenet_pytorch import MTCNN
 import deepface
 # from deepface import DeepFace
-
+import sys
 st.title('Face App')
 
 st.subheader("\n\n\n\n")
