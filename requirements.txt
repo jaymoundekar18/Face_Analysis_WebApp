@@ -6,7 +6,7 @@ opencv-python-headless
 streamlit
 pillow
 facenet_pytorch
-deepface
+deepface==0.0.93
 streamlit_webrtc
 tf-keras
 tqdm
