@@ -8,6 +8,6 @@ pillow
 facenet_pytorch
 deepface==0.0.92
 streamlit_webrtc
-tf-keras
+tf-keras==2.18.0
 tqdm>=4.30.0
 gdown>=3.10.1
