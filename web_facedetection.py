@@ -4,7 +4,7 @@ from PIL import Image
 import numpy as np
 from facenet_pytorch import MTCNN
 import deepface
-import deepface.DeepFace
+from deepface import DeepFace
 
 st.title('Face App')
 
