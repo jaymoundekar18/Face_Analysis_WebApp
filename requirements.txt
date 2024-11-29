@@ -1,6 +1,6 @@
 wheel
-numpy
-pandas
+numpy>=1.14.0
+pandas>=0.23.4
 plotly
 opencv-python-headless
 streamlit
@@ -9,4 +9,5 @@ facenet_pytorch
 deepface==0.0.93
 streamlit_webrtc
 tf-keras
-tqdm
+tqdm>=4.30.0
+gdown>=3.10.1
