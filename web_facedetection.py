@@ -3,8 +3,8 @@ import cv2
 from PIL import Image
 import numpy as np
 from facenet_pytorch import MTCNN
-import deepface
-# from deepface import DeepFace
+# import deepface
+from deepface import DeepFace
 import sys
 st.title('Face App')
 
