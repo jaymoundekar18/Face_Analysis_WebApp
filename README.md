@@ -72,7 +72,7 @@ All dependencies listed in the requirements.txt file. Use the following command:
    ```
   Open the ```Local URL: http://localhost:8501``` in your browser the application will be running there.
 
-#### If you encounter any issues while running the app, you can visit my [hosted app](https://faceanalysisdrx.streamlit.app/).
+# If you encounter any issues while running the app, you can visit my [hosted app](https://faceanalysisdrx.streamlit.app/).
 
 #### You can also run the desktop version of this app:
   ```bash
