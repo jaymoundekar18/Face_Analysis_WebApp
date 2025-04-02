@@ -19,7 +19,7 @@ class App(ct.CTk):
     def __init__(self):
         super().__init__()
 
-        self.title("Face App")
+        self.title("Face Analysis")
         self.geometry("700x700")
         self.iconbitmap(r"D:\code\MTCNN_Prac\FACE APPS\FaceApp\face1.ico")
 
@@ -35,7 +35,7 @@ class App(ct.CTk):
         self.titlelabelframe.pack(pady=20)
 
     # Title label inside title frame
-        self.titlelabel = ct.CTkLabel(self.titlelabelframe, text="Face App",fg_color="transparent",text_color=("black"),font=("arial black",32))
+        self.titlelabel = ct.CTkLabel(self.titlelabelframe, text="Face Analysis",fg_color="transparent",text_color=("black"),font=("arial black",32))
         self.titlelabel.pack()
         
     # Setting up Camera Frame
@@ -165,6 +165,7 @@ class App(ct.CTk):
         self.capImageLabel.configure(text="",image=image)
         self.capImageLabel.image=image
         # self.capInfo.configure(text="IMAGE CAPTURED",text_color=("green"),font=("arial black",24))
+        cv2.inwrite("captured_image",image)
         print("IMAGE CAPTURED SUCCESSFULLY \n")
         messagebox.showinfo("","Image captured Successfully !")
 
@@ -194,7 +195,7 @@ class App(ct.CTk):
 
             try:
 
-                result = DeepFace.find(img_path=image, db_path=r"D:\code\MTCNN_Prac\vsd")
+                result = DeepFace.find(img_path=image, db_path="path_to_your_face_database")
                 x,y = result[0].shape
 
                 if x > 1:
