@@ -165,7 +165,7 @@ class App(ct.CTk):
         self.capImageLabel.configure(text="",image=image)
         self.capImageLabel.image=image
         # self.capInfo.configure(text="IMAGE CAPTURED",text_color=("green"),font=("arial black",24))
-        cv2.inwrite("captured_image",image)
+        cv2.imwrite("captured_image.jpg",image)
         print("IMAGE CAPTURED SUCCESSFULLY \n")
         messagebox.showinfo("","Image captured Successfully !")
 
