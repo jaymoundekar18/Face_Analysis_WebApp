@@ -25,35 +25,36 @@ class App(ct.CTk):
 
         self.faceDetection = False
 
-        # Setting up the main frame
+    # Setting up the main frame
         self.main_frame = ct.CTkScrollableFrame(self)
         self.main_frame.pack(fill="both", expand=True)
 
         
-        # Title Frame
+    # Title Frame
         self.titlelabelframe = ct.CTkFrame(self.main_frame, width=600, height=100, fg_color="transparent")
         self.titlelabelframe.pack(pady=20)
 
-        # Title label inside title frame
+    # Title label inside title frame
         self.titlelabel = ct.CTkLabel(self.titlelabelframe, text="Face App",fg_color="transparent",text_color=("black"),font=("arial black",32))
         self.titlelabel.pack()
         
-        # Setting up Camera Frame
+    # Setting up Camera Frame
         self.cameraframe = ct.CTkFrame(self.main_frame, width=500, height=300)
         self.cameraframe.pack()
 
-        # Display Camera window in the camera frame
+    # Display Camera window in the camera frame
         self.camera_label = ct.CTkLabel(self.cameraframe,text="")
         self.camera_label.pack()
-            # Calling the video stream function
+        
+    # Calling the video stream function
         self.video_stream = cv2.VideoCapture(0)
         self.show_cam()
 
-        # Setting up Button Frame
+    # Setting up Button Frame
         self.dropbarframe = ct.CTkFrame(self.main_frame, width=600, height=100, fg_color="transparent")
         self.dropbarframe.pack(pady=20)
 
-        # Initializing Buttons 
+    # Initializing Buttons 
         self.capBtn = ct.CTkButton(self.dropbarframe,text="Capture \n Image",command=self.capture_image)
         self.capBtn.grid(row=0, column=0,padx=10)
 
@@ -66,37 +67,39 @@ class App(ct.CTk):
         self.analyzeBtn = ct.CTkButton(self.dropbarframe,text="Face \n Analysis", command=self.analysisFace)
         self.analyzeBtn.grid(row=0, column=3,padx=10)
 
-        ## Display Frame to display all the click button function
+    ## Display Frame to display all the click button function
         self.displayFrame = ct.CTkFrame(self.main_frame, width=600, height=300)
         self.displayFrame.pack()
 
-        # Show captured image
+    # Show captured image
         self.capImageLabel = ct.CTkLabel(self.displayFrame, text=None)
         self.capImageLabel.pack(pady=20)
 
-        # Show captured info
+    # Show captured info
         self.capInfo = ct.CTkLabel(self.displayFrame, text="")
         self.capInfo.pack(pady=20)
         
 
-        ## End button Frame 
+    ## End button Frame 
         self.endFrame = ct.CTkFrame(self.main_frame, width=600, height=300)
         self.endFrame.pack()    
 
-        # End Button
+    # End Button
         self.endButton = ct.CTkButton(self.endFrame,text="Close App", command=self.close_app)
         self.endButton.pack()
 
 
 ## Working functions
 
-    # Close app function
+# Close app function
 
     def close_app(self):
         if messagebox.askokcancel("Quit","Do you want to quit the application?"):
             self.destroy()
-       
-    # Camera function to display realtime video stream
+
+
+    
+# Camera function to display realtime video stream
     def show_cam(self):
 
         if self.faceDetection:
@@ -127,8 +130,6 @@ class App(ct.CTk):
 
 
         else:
-
-
             ret, frame = self.video_stream.read()
             if ret:
                 image = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
@@ -141,7 +142,9 @@ class App(ct.CTk):
 
             self.after(1, self.show_cam)
 
-    # Clear display frame
+
+    
+# Clear display frame
 
     def clear_display(self):
         self.capInfo.configure(text="")
@@ -150,7 +153,7 @@ class App(ct.CTk):
         self.faceDetection = False
         print("DISPLAY FRAME CLEARED")
 
-    # Capture image from the video stream
+# Capture image from the video stream
     def capture_image(self):
         self.clear_display()
         # self.faceDetection = False
@@ -166,7 +169,7 @@ class App(ct.CTk):
         messagebox.showinfo("","Image captured Successfully !")
 
 
-    # Live Face Detection
+# Live Face Detection
 
     def detectFace(self):
         self.clear_display()
@@ -175,7 +178,7 @@ class App(ct.CTk):
         self.capImageLabel.configure(text="")
         
 
-    # Face Recognition
+# Face Recognition
 
     def recogFace(self):
         
@@ -215,7 +218,7 @@ class App(ct.CTk):
                 self.capImageLabel.configure(text="FACE NOT CAPTURED PROPERLY!")
 
 
-    # Face Analysis
+# Face Analysis
 
     def analysisFace(self):
         self.clear_display()
