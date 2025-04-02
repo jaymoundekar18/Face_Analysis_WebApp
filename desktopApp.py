@@ -21,7 +21,7 @@ class App(ct.CTk):
 
         self.title("Face Analysis")
         self.geometry("700x700")
-        self.iconbitmap(r"D:\code\MTCNN_Prac\FACE APPS\FaceApp\face1.ico")
+        self.iconbitmap("icon.ico")
 
         self.faceDetection = False
 
